@@ -6,12 +6,13 @@
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include <helper_cuda.h>
 
 
 void merge(int *src, int offset, int leftSize, int rightSize);
 void sequentialMergeSort(int *src, int offset, int size);
 void parallelMergeSort(int *src, int size, int *result, bool gpu_mode);
-void gpuMergeSort(int *src, int offset, int size);
+__global__ void gpuMergeSort(int *src, int offset, int size);
 
 int main(int argc, char **argv)
 {
@@ -121,7 +122,26 @@ void parallelMergeSort(int *src, int size, int *result, bool gpu_mode)
 
 	if(gpu_mode){
 		// TODO: GPU Parallelization 
-		gpuMergeSort(processPart, 0, valuesPerProcess);
+
+		// * Calculate threadsPerBlock and blocksPerGrid
+		int threadsPerBlock;  
+		int minBlocksPerGrid; 
+						
+		int blocksPerGrid;
+
+		cudaOccupancyMaxPotentialBlockSize(&minBlocksPerGrid, &threadsPerBlock,	gpuMergeSort);
+
+		blocksPerGrid = (valuesPerProcess + threadsPerBlock - 1) / threadsPerBlock;
+
+		// * Allocate and copy data to GPU shared memory
+		int *gpuData, *gpuResult;
+
+		checkCudaErrors(cudaMalloc((void**) &gpuData, valuesPerProcess * sizeof(int)));
+		checkCudaErrors(cudaMalloc((void**) &gpuResult, valuesPerProcess * sizeof(int)));
+
+		checkCudaErrors(cudaMemcpy(gpuData, processPart, valuesPerProcess * sizeof(int), cudaMemcpyHostToDevice));
+
+		gpuMergeSort<<<blocksPerGrid, threadsPerBlock>>>(processPart, 0, valuesPerProcess);
 	}
 	else{
 		sequentialMergeSort(processPart, 0, valuesPerProcess);
@@ -137,13 +157,13 @@ void parallelMergeSort(int *src, int size, int *result, bool gpu_mode)
 	{
 		if (proc_id % (int)pow(2, k) == pow(2, k - 1))
 		{
-			// printf("\nId %d sending to %f\n", proc_id, proc_id - pow(2, k - 1));
+			// printf("\nId %d sending %d values to %f\n", proc_id, countToSend, proc_id - pow(2, k - 1));
 			MPI_Send(result, countToSend, MPI_INT, proc_id - pow(2, k - 1), k, MPI_COMM_WORLD);
 		}
 		else if (proc_id % (int)pow(2, k) == 0 && proc_id + pow(2, k - 1) < n_procs)
 		{
-			// printf("\nId %d receiving from %f\n", proc_id, proc_id + pow(2, k - 1));
-			MPI_Recv(result + countToSend, valuesPerProcess * k, MPI_INT, proc_id + pow(2, k - 1), k, MPI_COMM_WORLD, &status);
+			// printf("\nId %d receiving %d values from %f\n", proc_id, valuesPerProcess * (int)pow(2, k), proc_id + pow(2, k - 1));
+			MPI_Recv(result + countToSend, valuesPerProcess * (int)pow(2, k), MPI_INT, proc_id + pow(2, k - 1), k, MPI_COMM_WORLD, &status);
 
 			int receivedCount;
 			MPI_Get_count(&status, MPI_INT, &receivedCount);
@@ -210,17 +230,27 @@ void sequentialMergeSort(int *src, int offset, int size)
 	}
 }
 
+__global__
 void gpuMergeSort(int *src, int offset, int size)
 {
-	cudaDeviceProp prop;
-    cudaGetDeviceProperties(&prop, 0);
-    printf("Device Number: %d\n", 0);
-    printf("  Device name: %s\n", prop.name);
-    printf("  Memory Clock Rate (KHz): %d\n",
-           prop.memoryClockRate);
-    printf("  Memory Bus Width (bits): %d\n",
-           prop.memoryBusWidth);
-    printf("  Peak Memory Bandwidth (GB/s): %f\n\n",
-           2.0*prop.memoryClockRate*(prop.memoryBusWidth/8)/1.0e6);
 	
+	
+}
+
+// GPU helper function
+// calculate the id of the current thread
+__device__ 
+unsigned int getIdx(dim3* threads, dim3* blocks) {
+    int x;
+    return threadIdx.x +
+           threadIdx.y * (x  = threads->x) +
+           threadIdx.z * (x *= threads->y) +
+           blockIdx.x  * (x *= threads->z) +
+           blockIdx.y  * (x *= blocks->z) +
+           blockIdx.z  * (x *= blocks->y);
+}
+
+__device__
+unsigned int getThreadIdx(){
+	return blockIdx.x * blockDim.x + threadIdx.x;
 }

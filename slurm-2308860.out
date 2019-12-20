@@ -1,0 +1,45 @@
+Parallel Merge Sort
+
+Random seed: 0x1234abcd
+Data size: 200000
+Execution mode: CPU + GPU
+
+Number of CPU nodes: 2
+Generating complete in 0.008834 s
+Device Number: 0
+  Device name: GeForce GTX TITAN X
+  Memory Clock Rate (KHz): 3505000
+  Memory Bus Width (bits): 384
+  Peak Memory Bandwidth (GB/s): 336.480000
+
+Device Number: 0
+  Device name: GeForce GTX TITAN X
+  Memory Clock Rate (KHz): 3505000
+  Memory Bus Width (bits): 384
+  Peak Memory Bandwidth (GB/s): 336.480000
+
+Execution complete in 0.071665 s
+
+
+Sorted array...
+
+i: 0, v: 1115971270
+i: 10001, v: 1437240205
+i: 20002, v: 199084316
+i: 30003, v: 1572358568
+i: 40004, v: 212978050
+i: 50005, v: 1603158712
+i: 60006, v: 1242025114
+i: 70007, v: 932361165
+i: 80008, v: 1570029134
+i: 90009, v: 2033836949
+i: 100010, v: 1478058150
+i: 110011, v: 154071654
+i: 120012, v: 1158179306
+i: 130013, v: 1812801255
+i: 140014, v: 867916308
+i: 150015, v: 853836242
+i: 160016, v: 1536394851
+i: 170017, v: 661621229
+i: 180018, v: 251673188
+i: 190019, v: 219547007
