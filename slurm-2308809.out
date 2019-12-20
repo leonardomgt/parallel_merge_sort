@@ -1,0 +1,14 @@
+Parallel Merge Sort
+
+Random seed: 0x79cbba1d
+Data size: 200000
+Execution mode: CPU
+
+Number of CPU nodes: 8
+Generating complete in 0.007200 s
+[node016:14269] *** An error occurred in MPI_Recv
+[node016:14269] *** reported by process [140734134747137,0]
+[node016:14269] *** on communicator MPI_COMM_WORLD
+[node016:14269] *** MPI_ERR_TRUNCATE: message truncated
+[node016:14269] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[node016:14269] ***    and potentially your MPI job)

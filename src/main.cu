@@ -7,9 +7,11 @@
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 
+
 void merge(int *src, int offset, int leftSize, int rightSize);
 void sequentialMergeSort(int *src, int offset, int size);
-void parallelMergeSort(int *src, int size, int *result);
+void parallelMergeSort(int *src, int size, int *result, bool gpu_mode);
+void gpuMergeSort(int *src, int offset, int size);
 
 int main(int argc, char **argv)
 {
@@ -23,12 +25,11 @@ int main(int argc, char **argv)
 
 	int base_seed;
 	ulong ds_size;
-	bool gpu_mode;
 
 	sscanf(argv[1], "%010x", &base_seed);
 	sscanf(argv[2], "%lu", &ds_size);
 
-	gpu_mode = !strcmp(argv[3], "GPU");
+	bool gpu_mode = !strcmp(argv[3], "GPU");
 
 	// * Initalize MPI Library
 	MPI_Init(&argc, &argv);
@@ -37,12 +38,20 @@ int main(int argc, char **argv)
 	MPI_Comm_size(MPI_COMM_WORLD, &n_procs);
 	MPI_Comm_rank(MPI_COMM_WORLD, &proc_id);
 
-	printf("ID: %d\n", proc_id);
+	//printf("ID: %d\n", proc_id);
 
 	int *my_array = new int[ds_size];
 
 	if (proc_id == 0)
 	{
+
+		printf("Parallel Merge Sort\n\n");
+		printf("Random seed: %s\n", argv[1]);
+		printf("Data size: %s\n", argv[2]);
+		printf("Execution mode: %s\n\n", gpu_mode ? "CPU + GPU" : "CPU");
+		printf("Number of CPU nodes: %d\n", n_procs);
+		
+
 		double start_generating = MPI_Wtime();
 
 		// * Generate differente seed for each node, such that different numbers are generated.
@@ -54,7 +63,7 @@ int main(int argc, char **argv)
 
 		double end_generating = MPI_Wtime();
 
-		printf("Generating complete in %f s\n\n", end_generating - start_generating);
+		printf("Generating complete in %f s\n", end_generating - start_generating);
 	}
 
 	double start_exec = MPI_Wtime();
@@ -62,7 +71,7 @@ int main(int argc, char **argv)
 	// * Execute the Parallel Merge Sort algorithm.
 
 	int *merged_array = new int[ds_size];
-	parallelMergeSort(my_array, ds_size, merged_array);
+	parallelMergeSort(my_array, ds_size, merged_array, gpu_mode);
 
 	double end_exec = MPI_Wtime();
 
@@ -82,7 +91,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-void parallelMergeSort(int *src, int size, int *result)
+void parallelMergeSort(int *src, int size, int *result, bool gpu_mode)
 {
 
 	int n_procs, proc_id;
@@ -201,8 +210,17 @@ void sequentialMergeSort(int *src, int offset, int size)
 	}
 }
 
-void gpuMergeSort(int *src, int offset, int size){
-	printf("blockDim: (%d, %d, %d)", blockDim.x, blockDim.y, blockDim.z);
-	printf("gridDim: (%d, %d, %d)", gridDim.x, gridDim.y, gridDim.z);
+void gpuMergeSort(int *src, int offset, int size)
+{
+	cudaDeviceProp prop;
+    cudaGetDeviceProperties(&prop, 0);
+    printf("Device Number: %d\n", 0);
+    printf("  Device name: %s\n", prop.name);
+    printf("  Memory Clock Rate (KHz): %d\n",
+           prop.memoryClockRate);
+    printf("  Memory Bus Width (bits): %d\n",
+           prop.memoryBusWidth);
+    printf("  Peak Memory Bandwidth (GB/s): %f\n\n",
+           2.0*prop.memoryClockRate*(prop.memoryBusWidth/8)/1.0e6);
 	
 }

@@ -8,7 +8,6 @@ module load openmpi/gcc/64
 module load cuda10.0/toolkit/10.0.130
 
 APP=./psort.out
-ARGS="${1} ${2} ${3}"
 OMPI_OPTS="--mca btl ^usnic"
 
-$MPI_RUN $OMPI_OPTS $APP $ARGS
+$MPI_RUN $OMPI_OPTS $APP
