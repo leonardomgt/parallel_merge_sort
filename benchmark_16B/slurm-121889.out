@@ -1,0 +1,28 @@
+Parallel Merge Sort
+
+Random seed: 0x40e8c724
+Data size: 16000000000
+Execution mode: CPU
+
+Number of CPU nodes: 2
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+[node108:29355] *** Process received signal ***
+[node108:29355] Signal: Aborted (6)
+[node108:29355] Signal code:  (-6)
+[node108:29355] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node108:29355] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node108:29355] [ 2] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node108:29355] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node108:29355] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node108:29355] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node108:29355] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node108:29355] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node108:29355] [ 8] ./psort.out[0x4044cd]
+[node108:29355] [ 9] ./psort.out[0x404346]
+[node108:29355] [10] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node108:29355] [11] ./psort.out[0x403fe9]
+[node108:29355] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 0 on node node108 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

@@ -1,0 +1,280 @@
+Parallel Merge Sort
+
+Random seed: 0xac7bd459
+Data size: 16000000000
+Execution mode: CPU
+
+Number of CPU nodes: 16
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+terminate called after throwing an instance of 'std::bad_array_new_length'
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+[node116:28261] *** Process received signal ***
+[node106:21646] *** Process received signal ***
+[node106:21646] Signal: Aborted (6)
+[node106:21646] Signal code:  (-6)
+terminate called after throwing an instance of 'std::bad_array_new_length'
+[node116:28261] Signal: Aborted (6)
+[node116:28261] Signal code:  (-6)
+[node116:28261] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node116:28261] [ 1] terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+  what():  std::bad_array_new_length
+[node108:30158] *** Process received signal ***
+[node108:30158] Signal: Aborted (6)
+[node108:30158] Signal code:  (-6)
+[node106:21646] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node106:21646] [ 1] terminate called after throwing an instance of 'std::bad_array_new_length'
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+  what():  std::bad_array_new_length
+[node102:30400] *** Process received signal ***
+[node102:30400] Signal: Aborted (6)
+[node102:30400] Signal code:  (-6)
+/lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node116:28261] [ 2] [node111:07283] *** Process received signal ***
+[node111:07283] Signal: Aborted (6)
+[node111:07283] Signal code:  (-6)
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+/lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node116:28261] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node116:28261] [ 4] terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+[node111:07283] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node111:07283] [ 1] [node107:28243] *** Process received signal ***
+[node107:28243] Signal: Aborted (6)
+[node107:28243] Signal code:  (-6)
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+[node108:30158] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node108:30158] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node106:21646] [ 2]   what():  std::bad_array_new_length
+[node112:18993] *** Process received signal ***
+[node103:10493] *** Process received signal ***
+[node103:10493] Signal: Aborted (6)
+[node103:10493] Signal code:  (-6)
+[node102:30400] [ 0] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node116:28261] [ 5] [node113:14958] *** Process received signal ***
+[node113:14958] Signal: Aborted (6)
+[node113:14958] Signal code:  (-6)
+/lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node111:07283] [ 2] terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+[node107:28243] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node107:28243] [ 1] [node118:27950] *** Process received signal ***
+[node118:27950] Signal: Aborted (6)
+[node118:27950] Signal code:  (-6)
+[node117:10094] *** Process received signal ***
+[node117:10094] Signal: Aborted (6)
+[node117:10094] Signal code:  (-6)
+/lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node108:30158] [ 2] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node108:30158] [ 3] terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+/lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node106:21646] [ 3] [node112:18993] Signal: Aborted (6)
+[node112:18993] Signal code:  (-6)
+[node112:18993] [ 0] [node103:10493] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node103:10493] [ 1] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node102:30400] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node102:30400] [ 2] terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node116:28261] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node116:28261] [ 7] [node113:14958] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node113:14958] [ 1] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node111:07283] [ 3] [node119:09179] *** Process received signal ***
+[node119:09179] Signal: Aborted (6)
+[node119:09179] Signal code:  (-6)
+/lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node107:28243] [ 2] [node118:27950] [ 0] [node117:10094] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node117:10094] [ 1] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node108:30158] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node108:30158] [ 5] [node109:00922] *** Process received signal ***
+[node109:00922] Signal: Aborted (6)
+[node109:00922] Signal code:  (-6)
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node106:21646] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node106:21646] [ 5] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node112:18993] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+/lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node103:10493] [ 2] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node102:30400] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node116:28261] [ 8] ./psort.out[0x4044cd]
+[node116:28261] [ 9] ./psort.out[0x404346]
+[node116:28261] [10] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node113:14958] [ 2] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node111:07283] [ 4] [node119:09179] [ 0] terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+/lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node107:28243] [ 3] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node118:27950] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node117:10094] [ 2] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node108:30158] [ 6] [node109:00922] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node109:00922] [ 1] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node106:21646] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node112:18993] [ 2] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node112:18993] [ 3] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node103:10493] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node102:30400] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node105:04152] *** Process received signal ***
+[node105:04152] Signal: Aborted (6)
+[node105:04152] Signal code:  (-6)
+/lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node118:27950] [ 2] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node117:10094] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node108:30158] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node108:30158] [ 8] ./psort.out[0x4044cd]
+[node108:30158] [ 9] ./psort.out[0x404346]
+[node108:30158] [10] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node109:00922] [ 2] [node106:21646] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node106:21646] [ 8] ./psort.out[0x4044cd]
+[node106:21646] [ 9] ./psort.out[0x404346]
+[node106:21646] [10] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node112:18993] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node103:10493] [ 4] [node102:30400] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node102:30400] [ 6] [node105:04152] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node105:04152] [ 1] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node116:28261] [11] ./psort.out[0x403fe9]
+[node116:28261] *** End of error message ***
+/lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node113:14958] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node111:07283] [ 5] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node119:09179] [ 1] [node115:07187] *** Process received signal ***
+[node115:07187] Signal: Aborted (6)
+[node115:07187] Signal code:  (-6)
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node107:28243] [ 4] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node105:04152] [ 2] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node113:14958] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node111:07283] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node111:07283] [ 7] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node119:09179] [ 2] [node115:07187] [ 0] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node107:28243] [ 5] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node118:27950] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node117:10094] [ 4] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node108:30158] [11] ./psort.out[0x403fe9]
+[node108:30158] *** End of error message ***
+/lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node109:00922] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node106:21646] [11] ./psort.out[0x403fe9]
+[node106:21646] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node112:18993] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node103:10493] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node102:30400] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node111:07283] [ 8] ./psort.out[0x4044cd]
+[node111:07283] [ 9] ./psort.out[0x404346]
+[node111:07283] [10] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node119:09179] [ 3] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node115:07187] [ 1] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node107:28243] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node118:27950] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node117:10094] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node109:00922] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node112:18993] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node112:18993] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node103:10493] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node102:30400] [ 8] ./psort.out[0x4044cd]
+[node102:30400] [ 9] ./psort.out[0x404346]
+[node102:30400] [10] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+/lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node105:04152] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node113:14958] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node113:14958] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node117:10094] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node109:00922] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node112:18993] [ 8] ./psort.out[0x4044cd]
+[node112:18993] [ 9] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node103:10493] [ 7] [node102:30400] [11] ./psort.out[0x403fe9]
+[node102:30400] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node105:04152] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node113:14958] [ 7] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node111:07283] [11] ./psort.out[0x403fe9]
+[node111:07283] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node119:09179] [ 4] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node115:07187] [ 2] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node107:28243] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node107:28243] [ 8] ./psort.out[0x4044cd]
+[node107:28243] [ 9] ./psort.out[0x404346]
+[node107:28243] [10] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node118:27950] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node105:04152] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node113:14958] [ 8] ./psort.out[0x4044cd]
+[node113:14958] [ 9] ./psort.out[0x404346]
+[node113:14958] [10] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node119:09179] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+/lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node115:07187] [ 3] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node107:28243] [11] ./psort.out[0x403fe9]
+[node107:28243] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node118:27950] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node117:10094] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node117:10094] [ 8] ./psort.out[0x4044cd]
+[node117:10094] [ 9] ./psort.out[0x404346]
+[node117:10094] [10] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node109:00922] [ 6] ./psort.out[0x404346]
+[node112:18993] [10] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node112:18993] [11] ./psort.out[0x403fe9]
+[node112:18993] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node103:10493] [ 8] ./psort.out[0x4044cd]
+[node103:10493] [ 9] ./psort.out[0x404346]
+[node103:10493] [10] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node103:10493] [11] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node118:27950] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node118:27950] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node117:10094] [11] ./psort.out[0x403fe9]
+[node117:10094] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node109:00922] [ 7] ./psort.out[0x403fe9]
+[node103:10493] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node105:04152] [ 6] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node113:14958] [11] ./psort.out[0x403fe9]
+[node113:14958] *** End of error message ***
+[node119:09179] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node115:07187] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node105:04152] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node105:04152] [ 8] ./psort.out[0x4044cd]
+[node105:04152] [ 9] ./psort.out[0x404346]
+[node105:04152] [10] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node119:09179] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node115:07187] [ 5] [ 8] ./psort.out[0x4044cd]
+[node118:27950] [ 9] ./psort.out[0x404346]
+[node118:27950] [10] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node109:00922] [ 8] ./psort.out[0x4044cd]
+[node109:00922] [ 9] ./psort.out[0x404346]
+[node109:00922] [10] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node118:27950] [11] ./psort.out[0x403fe9]
+[node118:27950] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node109:00922] [11] ./psort.out[0x403fe9]
+[node109:00922] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node105:04152] [11] ./psort.out[0x403fe9]
+[node105:04152] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node119:09179] [ 8] ./psort.out[0x4044cd]
+[node119:09179] [ 9] ./psort.out[0x404346]
+[node119:09179] [10] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node115:07187] [ 6] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node119:09179] [11] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node115:07187] [ 7] ./psort.out[0x403fe9]
+[node119:09179] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node115:07187] [ 8] ./psort.out[0x4044cd]
+[node115:07187] [ 9] ./psort.out[0x404346]
+[node115:07187] [10] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node115:07187] [11] ./psort.out[0x403fe9]
+[node115:07187] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 0 on node node102 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

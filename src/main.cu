@@ -9,10 +9,18 @@
 #include <helper_cuda.h>
 
 
-void merge(int *src, int offset, int leftSize, int rightSize);
-void sequentialMergeSort(int *src, int offset, int size);
-void parallelMergeSort(int *src, int size, int *result, bool gpu_mode);
-__global__ void gpuMergeSort(int *src, int offset, int size);
+void merge(int *src, ulong offset, ulong leftSize, ulong rightSize);
+void sequentialMergeSort(int *src, ulong offset, ulong size);
+void parallelMergeSort(int *src, ulong size, int *result, bool gpu_mode);
+__global__ void gpuMergeSort(int *src, int *dest, ulong size, ulong threadPartSize, int nSlices, int threadsPerBlock, int blocksPerGrid);
+__device__ void gpuMerge(int* src, int* dest, ulong it_left, ulong it_middle, ulong it_right);
+// * Create new MPI datatype: MPI_EDGE
+MPI_Datatype create_chunk_MPI_datatype();
+
+struct chunk {
+	int* data;
+	ulong size;
+};
 
 int main(int argc, char **argv)
 {
@@ -40,8 +48,9 @@ int main(int argc, char **argv)
 	MPI_Comm_rank(MPI_COMM_WORLD, &proc_id);
 
 	//printf("ID: %d\n", proc_id);
-
+	printf("First alocation: %d...", proc_id);
 	int *my_array = new int[ds_size];
+	printf(" DONE\n");
 
 	if (proc_id == 0)
 	{
@@ -76,6 +85,7 @@ int main(int argc, char **argv)
 
 	double end_exec = MPI_Wtime();
 
+
 	if (proc_id == 0)
 	{
 		printf("Execution complete in %f s\n", end_exec - start_exec);
@@ -92,7 +102,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-void parallelMergeSort(int *src, int size, int *result, bool gpu_mode)
+void parallelMergeSort(int *src, ulong size, int *result, bool gpu_mode)
 {
 
 	int n_procs, proc_id;
@@ -100,9 +110,15 @@ void parallelMergeSort(int *src, int size, int *result, bool gpu_mode)
 	MPI_Comm_rank(MPI_COMM_WORLD, &proc_id);
 
 	// * Evenly number of values to be sorted per process
-	int valuesPerProcess = (size + n_procs - 1) / n_procs;
-
+	printf("SIZE: %lu\n", size);
+	printf("n_procs: %d\n", n_procs);
+	printf("size + n_procs - 1: %lu\n", size + n_procs - 1);
+	printf("valuesPerProcess: %lu\n", (size + n_procs - 1) / n_procs);
+	ulong valuesPerProcess = ((size + n_procs - 1) / n_procs);
+	
+	printf("Third alocation: %d... valuesPerProcess: %lu", proc_id, valuesPerProcess);
 	int *processPart = new int[valuesPerProcess];
+	printf(" DONE\n");
 
 	// TODO: Use MPI_Scatterv to distribute the values more evenly
 
@@ -136,12 +152,32 @@ void parallelMergeSort(int *src, int size, int *result, bool gpu_mode)
 		// * Allocate and copy data to GPU shared memory
 		int *gpuData, *gpuResult;
 
+
 		checkCudaErrors(cudaMalloc((void**) &gpuData, valuesPerProcess * sizeof(int)));
 		checkCudaErrors(cudaMalloc((void**) &gpuResult, valuesPerProcess * sizeof(int)));
 
 		checkCudaErrors(cudaMemcpy(gpuData, processPart, valuesPerProcess * sizeof(int), cudaMemcpyHostToDevice));
 
-		gpuMergeSort<<<blocksPerGrid, threadsPerBlock>>>(processPart, 0, valuesPerProcess);
+		int *gpuInput = gpuData, *gpuOutput = gpuResult;
+
+		long nThreads = threadsPerBlock * blocksPerGrid;
+
+		for (int valuesPerThread = 2; valuesPerThread < (size << 1); valuesPerThread <<= 1) {
+			ulong nSlices = size / ((nThreads) * valuesPerThread) + 1;
+	
+			gpuMergeSort<<<blocksPerGrid, threadsPerBlock>>>(gpuInput, gpuOutput, valuesPerProcess, valuesPerThread, nSlices, threadsPerBlock, blocksPerGrid);
+	
+	
+			// Swap input and output pointers for next iteration
+			gpuInput = gpuInput == gpuData ? gpuResult : gpuData;
+			gpuOutput = gpuOutput == gpuData ? gpuResult : gpuData;
+		}
+		
+		checkCudaErrors(cudaMemcpy(processPart, gpuData, valuesPerProcess * sizeof(long), cudaMemcpyDeviceToHost));
+
+		checkCudaErrors(cudaFree(gpuInput));
+		checkCudaErrors(cudaFree(gpuOutput));
+		// gpuMergeSort<<<blocksPerGrid, threadsPerBlock>>>(processPart, nThreads, valuesPerProcess);
 	}
 	else{
 		sequentialMergeSort(processPart, 0, valuesPerProcess);
@@ -175,7 +211,7 @@ void parallelMergeSort(int *src, int size, int *result, bool gpu_mode)
 	}
 }
 
-void merge(int *src, int offset, int leftSize, int rightSize)
+void merge(int *src, ulong offset, ulong leftSize, ulong rightSize)
 {
 
 	int *left = new int[leftSize];
@@ -216,7 +252,7 @@ void merge(int *src, int offset, int leftSize, int rightSize)
 	}
 }
 
-void sequentialMergeSort(int *src, int offset, int size)
+void sequentialMergeSort(int *src, ulong offset, ulong size)
 {
 	if (size > 1)
 	{
@@ -231,26 +267,36 @@ void sequentialMergeSort(int *src, int offset, int size)
 }
 
 __global__
-void gpuMergeSort(int *src, int offset, int size)
+void gpuMergeSort(int *src, int *dest, ulong size, ulong threadPartSize, int nSlices, int threadsPerBlock, int blocksPerGrid)
 {
-	
-	
+	int threadIndex = blockIdx.x * blockDim.x + threadIdx.x;
+
+	ulong it_left = threadPartSize * threadIndex * nSlices;
+	ulong it_middle, it_right;
+
+    for (long si = 0; si < nSlices; si++) {
+		if (it_left >= size)
+			break;
+
+		it_middle = min(it_left + (threadPartSize >> 1), size);
+		it_right = min(it_left + threadPartSize, size);
+
+		gpuMerge(src, dest, it_left, it_middle, it_right);
+		it_left += threadPartSize;
+	}
 }
 
-// GPU helper function
-// calculate the id of the current thread
 __device__ 
-unsigned int getIdx(dim3* threads, dim3* blocks) {
-    int x;
-    return threadIdx.x +
-           threadIdx.y * (x  = threads->x) +
-           threadIdx.z * (x *= threads->y) +
-           blockIdx.x  * (x *= threads->z) +
-           blockIdx.y  * (x *= blocks->z) +
-           blockIdx.z  * (x *= blocks->y);
-}
-
-__device__
-unsigned int getThreadIdx(){
-	return blockIdx.x * blockDim.x + threadIdx.x;
+void gpuMerge(int* src, int* dest, ulong it_left, ulong it_middle, ulong it_right) {
+    ulong i = it_left;
+    ulong j = it_middle;
+    for (ulong k = it_left; k < it_right; k++) {
+        if (i < it_middle && (j >= it_right || src[i] < src[j])) {
+            dest[k] = src[i];
+            i++;
+        } else {
+            dest[k] = src[j];
+            j++;
+        }
+    }
 }
