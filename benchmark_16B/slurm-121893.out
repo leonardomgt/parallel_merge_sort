@@ -1,0 +1,66 @@
+Parallel Merge Sort
+
+Random seed: 0x10203040
+Data size: 16000000000
+Execution mode: CPU
+
+Number of CPU nodes: 4
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+[node117:09462] *** Process received signal ***
+[node117:09462] Signal: Aborted (6)
+[node117:09462] Signal code:  (-6)
+[node117:09462] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node117:09462] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node117:09462] [ 2] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node117:09462] [ 3] terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node117:09462] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node117:09462] [ 5] [node116:27612] *** Process received signal ***
+[node116:27612] Signal: Aborted (6)
+[node116:27612] Signal code:  (-6)
+terminate called after throwing an instance of 'std::bad_array_new_length'
+  what():  std::bad_array_new_length
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node117:09462] [ 6] [node116:27612] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node116:27612] [ 1] [node118:27313] *** Process received signal ***
+[node118:27313] Signal: Aborted (6)
+[node118:27313] Signal code:  (-6)
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node117:09462] [ 7] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node116:27612] [ 2] [node118:27313] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node118:27313] [ 1] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node117:09462] [ 8] ./psort.out[0x4044cd]
+[node117:09462] [ 9] ./psort.out[0x404346]
+[node117:09462] [10] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node116:27612] [ 3] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node118:27313] [ 2] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node117:09462] [11] ./psort.out[0x403fe9]
+[node117:09462] *** End of error message ***
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node116:27612] [ 4] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node118:27313] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node116:27612] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node118:27313] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node116:27612] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node116:27612] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node118:27313] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node118:27313] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node118:27313] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node118:27313] [ 8] ./psort.out[0x4044cd]
+[node118:27313] [ 9] ./psort.out[0x404346]
+/cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8d5c2)[0x2aaaab6565c2]
+[node116:27612] [ 8] ./psort.out[0x4044cd]
+[node116:27612] [ 9] [node118:27313] [10] ./psort.out[0x404346]
+[node116:27612] [10] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node116:27612] [11] ./psort.out[0x403fe9]
+[node116:27612] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node118:27313] [11] ./psort.out[0x403fe9]
+[node118:27313] *** End of error message ***
+[node115:06493] [[59997,0],0]->[[59997,0],2] mca_oob_tcp_msg_send_bytes: write failed: Broken pipe (32) [sd = 15]
+[node115:06493] [[59997,0],0]-[[59997,0],2] mca_oob_tcp_peer_send_handler: unable to send header
+--------------------------------------------------------------------------
+mpirun noticed that process rank 2 with PID 0 on node node117 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------

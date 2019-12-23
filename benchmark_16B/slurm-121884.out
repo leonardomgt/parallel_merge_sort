@@ -1,0 +1,28 @@
+Parallel Merge Sort
+
+Random seed: 0x40e8c724
+Data size: 16000000000
+Execution mode: CPU
+
+Number of CPU nodes: 1
+Generating complete in 303.893909 s
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+[node124:32171] *** Process received signal ***
+[node124:32171] Signal: Aborted (6)
+[node124:32171] Signal code:  (-6)
+[node124:32171] [ 0] /lib64/libpthread.so.0(+0xf5e0)[0x2aaaab1b85e0]
+[node124:32171] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x2aaaabe981f7]
+[node124:32171] [ 2] /lib64/libc.so.6(abort+0x148)[0x2aaaabe998e8]
+[node124:32171] [ 3] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(_ZN9__gnu_cxx27__verbose_terminate_handlerEv+0x15d)[0x2aaaab65962d]
+[node124:32171] [ 4] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e5d6)[0x2aaaab6575d6]
+[node124:32171] [ 5] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e621)[0x2aaaab657621]
+[node124:32171] [ 6] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8e839)[0x2aaaab657839]
+[node124:32171] [ 7] /cm/local/apps/gcc/6.3.0/lib64/libstdc++.so.6(+0x8ed5c)[0x2aaaab657d5c]
+[node124:32171] [ 8] ./psort.out[0x404328]
+[node124:32171] [ 9] /lib64/libc.so.6(__libc_start_main+0xf5)[0x2aaaabe84c05]
+[node124:32171] [10] ./psort.out[0x403fe9]
+[node124:32171] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 32171 on node node124 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------
