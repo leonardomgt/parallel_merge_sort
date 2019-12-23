@@ -48,9 +48,7 @@ int main(int argc, char **argv)
 	MPI_Comm_rank(MPI_COMM_WORLD, &proc_id);
 
 	//printf("ID: %d\n", proc_id);
-	printf("First alocation: %d...", proc_id);
 	int *my_array = new int[ds_size];
-	printf(" DONE\n");
 
 	if (proc_id == 0)
 	{
@@ -110,15 +108,9 @@ void parallelMergeSort(int *src, ulong size, int *result, bool gpu_mode)
 	MPI_Comm_rank(MPI_COMM_WORLD, &proc_id);
 
 	// * Evenly number of values to be sorted per process
-	printf("SIZE: %lu\n", size);
-	printf("n_procs: %d\n", n_procs);
-	printf("size + n_procs - 1: %lu\n", size + n_procs - 1);
-	printf("valuesPerProcess: %lu\n", (size + n_procs - 1) / n_procs);
 	ulong valuesPerProcess = ((size + n_procs - 1) / n_procs);
 	
-	printf("Third alocation: %d... valuesPerProcess: %lu", proc_id, valuesPerProcess);
 	int *processPart = new int[valuesPerProcess];
-	printf(" DONE\n");
 
 	// TODO: Use MPI_Scatterv to distribute the values more evenly
 
@@ -137,7 +129,6 @@ void parallelMergeSort(int *src, ulong size, int *result, bool gpu_mode)
 
 
 	if(gpu_mode){
-		// TODO: GPU Parallelization 
 
 		// * Calculate threadsPerBlock and blocksPerGrid
 		int threadsPerBlock;  
@@ -173,7 +164,7 @@ void parallelMergeSort(int *src, ulong size, int *result, bool gpu_mode)
 			gpuOutput = gpuOutput == gpuData ? gpuResult : gpuData;
 		}
 		
-		checkCudaErrors(cudaMemcpy(processPart, gpuData, valuesPerProcess * sizeof(long), cudaMemcpyDeviceToHost));
+		checkCudaErrors(cudaMemcpy(result, gpuData, valuesPerProcess * sizeof(int), cudaMemcpyDeviceToHost));
 
 		checkCudaErrors(cudaFree(gpuInput));
 		checkCudaErrors(cudaFree(gpuOutput));
@@ -181,9 +172,9 @@ void parallelMergeSort(int *src, ulong size, int *result, bool gpu_mode)
 	}
 	else{
 		sequentialMergeSort(processPart, 0, valuesPerProcess);
+		memcpy(result, processPart, valuesPerProcess * sizeof(int));
 	}
 
-	memcpy(result, processPart, valuesPerProcess * sizeof(int));
 
 	int countToSend = valuesPerProcess;
 
