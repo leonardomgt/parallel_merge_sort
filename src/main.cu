@@ -153,8 +153,8 @@ void parallelMergeSort(int *src, ulong size, int *result, bool gpu_mode)
 
 		long nThreads = threadsPerBlock * blocksPerGrid;
 
-		for (int valuesPerThread = 2; valuesPerThread < (size << 1); valuesPerThread <<= 1) {
-			ulong nSlices = size / ((nThreads) * valuesPerThread) + 1;
+		for (int valuesPerThread = 2; valuesPerThread < (valuesPerProcess << 1); valuesPerThread <<= 1) {
+			ulong nSlices = valuesPerProcess / ((nThreads) * valuesPerThread) + 1;
 	
 			gpuMergeSort<<<blocksPerGrid, threadsPerBlock>>>(gpuInput, gpuOutput, valuesPerProcess, valuesPerThread, nSlices, threadsPerBlock, blocksPerGrid);
 	
